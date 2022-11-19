@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-family: 'RO Sans', Calibri, sans-serif;
+    font-weight: normal;
+    font-size: 1.125rem;
+    line-height: 1.625;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+#header .logo {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1200px;
+}
+#header .logo:before,
+#header .logo:after {
+    content: ' ';
+    display: table;
+}
+#header .logo:after {
+    clear: both;
+}
+
+.logo {
+    overflow: hidden;
+}
+.logo .wrapper {
+    margin: 0 0 0 50%;
+}
+.logo .wrapper img {
+    display: inline-block;
+    margin-left: -22px;
+    margin-bottom: 10px;
+}
+.logo .wrapper a {
+    display: inline-block;
+}
+.logo .wrapper a:focus {
+    outline: 0;
+}
+.logo .wrapper a:focus img {
+    outline: 2px solid #82befb;
+}
+#header .titlebar {
+    background-color: #c3dbb6;
+    color: #000;
+}
+.titlebar {
+    background-color: #cce0f1;
+    min-height: 30px;
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 1.4em;
+    overflow: hidden;
+}
+@media (min-width: 1200px) {
+    .titlebar {
+        font-size: 1.3333em;
+        line-height: 1.3333em;
+    }
+}
+#header .titlebar .wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1200px;
+}
+#header .titlebar .wrapper:before,
+#header .titlebar .wrapper:after {
+    content: ' ';
+    display: table;
+}
+#header .titlebar .wrapper:after {
+    clear: both;
+}
+#header #search {
+    background-color: #39870c;
+}
+#search {
+    font-size: 0.875em;
+    height: 44px;
+    background-color: #01689b;
+}
+.footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+#footer:before,
+#footer:after {
+    content: ' ';
+    display: table;
+}
+#footer:after {
+    clear: both;
+}
+#footer .wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1200px;
+}
+#footer .wrapper:before,
+#footer .wrapper:after {
+    content: ' ';
+    display: table;
+}
+#footer .wrapper:after {
+    clear: both;
+}
+#footer .wrapper .column {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media (min-width: 768px) {
+    #footer .wrapper .column {
+        float: left;
+        width: 33.33333%;
+    }
+}
+#footer {
+    border-top: 3px solid #4e4e4e;
+    background-color: #e6e6e6;
+}
+#footer h2 {
+    color: #535353;
+    border-color: #b4b4b4;
+}
+#footer a,
+#footer a:visited {
+    color: #535353;
+}
+#footer a:hover {
+    color: #535353;
+}
