@@ -51,6 +51,26 @@ paths:
           schema:
             type: string
             example: keyword="paspoort"
+        - name: startRecord
+          in: query
+          schema:
+            type: integer
+            example: 1
+        - name: maximumRecords
+          in: query
+          schema:
+            type: integer
+            example: 100
+        - name: recordSchema
+          in: query
+          schema:
+            type: string
+        - name: x-info-1-accept
+          in: query
+          description: "Wanneer deze parameter wordt meegegeven, worden naast de gebruikelijke zoekresultaten ook facetwaarden teruggegeven."
+          schema:
+            type: string
+            example: any
       responses:
         '200':
           description: De zoekresultaten

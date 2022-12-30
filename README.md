@@ -21,6 +21,8 @@ De [SRU standaard](https://standaarden.overheid.nl/sru) wordt gebruikt bij het d
 
 [https://zoekdienst.overheid.nl/sru/Search?x-connection=sc&operation=searchRetrieve&version=1.2&startRecord=1&maximumRecords=10&query=](https://zoekdienst.overheid.nl/sru/Search?x-connection=sc&operation=searchRetrieve&version=1.2&startRecord=1&maximumRecords=10&query=)
 
+Wanneer de parameter **x-info-1-accept=any** wordt meegegeven, worden naast de gebruikelijke zoekresultaten ook de [facetwaarden](https://logius.nl/domeinen/interactie/samenwerkende-catalogi/documentatie/informatie-publicatie-model#facetten) teruggegeven.
+
 Het resultaat wordt als XML in de response gegeven. Met OpenAPI is de complete structuur beschreven op [zoekdienst-sc.github.io](https://zoekdienst-sc.github.io/).
 
 Er zijn meer [collecties van KOOP](https://data.overheid.nl/OpenDataSets/HandleidingopendatawebservicesvoorOverheid.nl.pdf) die via de SRU standaard te query'en zijn. 
