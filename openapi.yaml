@@ -2,15 +2,27 @@ openapi: "3.0.0"
 info:
   version: 1.0.0
   title: Zoekdienst SC
-  license:
-    name: MIT
   description: |
     ## Zoekdienst SC
+    
+    De Zoekdienst kan bevraagd worden met [queries](https://logius.nl/domeinen/interactie/samenwerkende-catalogi/documentatie/informatie-publicatie-model#techniek-bevraging-van-de-landelijke-virtuele-catalogus-middels-api). De REST request/response staan hieronder beschreven volgens OpenAPI. 
+    Meer informatie over het opbouwen van een query is te vinden op de bijbehorende [GitHub pagina](https://github.com/zoekdienst-sc/zoekdienst-sc.github.io).
 
-    | Syntax | Description |
-    | ----------- | ----------- |
-    | Header | Title |
-    | Paragraph | Text | 
+    In de **query** parameter kan opgegeven worden aan welke criteria de zoekresultaten moeten voldoen. Bijvoorbeeld: producten en diensten van gemeente Almere voor ondernemers. 
+    De query wordt gespecificeerd conform de [Contextual Query Language (CQL)](https://www.loc.gov/standards/sru/cql/spec.html). 
+    De meeste metadatavelden uit de SC collectie kunnen als criterium worden gebruikt en gecombineerd worden met **and**, **or** en **not**. 
+    Er kan ook op trefwoord worden gezocht in meerdere metedatavelden met "keyword". 
+    Meer over de mogelijkheden is te vinden in de SC documentatie op de [website van Logius](https://logius.nl/diensten/samenwerkende-catalogi/documentatie/informatie-publicatie-model).
+
+    Voorbeelden:
+      
+      | query                                                     | betekenis | 
+      | --------------------------------------------------------- | --------------------------------------------------- |
+      | authority = "Almere" and audience = "ondernemer"          | alle producten en diensten met bevoegd gezag Almere en doelgroep ondernemer
+      | organisatietype = "Gemeente" and (modified >= 2022-01-01) | alle producten van gemeenten met mutatiedatum op of na 1 januari 2022 
+      | keyword = "kinderopvangtoeslag"                           | producten en diensten met 'kinderopvang' in een van de tekstvelden
+      | (audience == "ondernemer" not audience == "particulier") and (organisatietype = "Gemeente") | producten en diensten van gemeenten die uitsluitend voor ondernemers zijn
+  
 
 servers:
   - url: https://zoekdienst.overheid.nl/sru
