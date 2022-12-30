@@ -46,7 +46,7 @@ paths:
             example: sc
         - name: query
           in: query
-          description: De daadwerkelijke zoekquery
+          description: De daadwerkelijke zoekquery in CQL formaat
           required: true
           schema:
             type: string
@@ -54,10 +54,140 @@ paths:
       responses:
         '200':
           description: De zoekresultaten
-          headers:
           content:
             application/xml:
               schema:
+                $ref: "#/components/schemas/searchRetrieveResponse"
 
+components:
 
+  schemas:
+
+    searchRetrieveResponse:
+      description: root element of the XML response
+      type: object
+      properties:
+        version:
+          type: string
+        numberOfRecords:
+          type: integer
+        records:
+          type: array
+          items:
+            $ref: "#/components/schemas/record"
+        nextRecordPosition:
+          type: integer
+          example: 11
+
+    record:
+      description: Elements of the search results
+      type: object
+      properties:
+        recordSchema:
+          type: string
+          format: url
+          example: "http://standaarden.overheid.nl/sru/"
+        recordPacking:
+          type: string
+          example: "xml"
+        recordData:
+          $ref: "#/components/schemas/RecordData"
+        recordPosition:
+          type: integer
+          example: 1
+
+    RecordData:
+      description: Elements of the search results
+      type: object
+      properties:
+        gzd:
+          type: object
+          properties:
+            originalData:
+              $ref: "#/components/schemas/OriginalData"
+            enrichedData:
+              $ref: "#/components/schemas/EnrichedData"
+
+    OriginalData:
+      type: object
+      properties:
+        overheidproduct:scproduct:
+          type: object
+          properties:
+            overheidproduct:meta:
+              type: object
+              properties:
+                overheidproduct:owmskern:
+                  $ref: "#/components/schemas/OwmsKern"
+                overheidproduct:owmsmantel:
+                  $ref: "#/components/schemas/OwmsMantel"
+                overheidproduct:scmeta:
+                  $ref: "#/components/schemas/ScMeta"
+
+    OwmsKern:
+      type: object
+      properties:
+        dcterms:identifier:
+          type: string
+          example: "<![CDATA[ https://www.smallingerland.nl/Onderwerpen/Paspoort_rijbewijs_uittreksels/Paspoort ]]>"
+        dcterms:title:
+          type: string
+          example: "<![CDATA[ Paspoort ]]>"
+        dcterms:language:
+          type: string
+          example: "<![CDATA[ nl ]]>"
+        dcterms:type:
+          type: string
+          example: "productbeschrijving"
+        overheid:authority:
+          type: string
+          example: "<![CDATA[ Smallingerland ]]>"
+
+    OwmsMantel:
+      type: object
+      properties:
+        dcterms:audience:
+          type: string
+          example: "particulier"
+        dcterms:subject:
+          type: string
+          example: "Recht"
+        dcterms:abstract:
+          type: string
+          example: "<![CDATA[ Een paspoort vraagt u persoonlijk aan. ]]>"
+
+    ScMeta:
+      type: object
+      properties:
+        overheidproduct:productID:
+          type: string
+          example: "<![CDATA[ 5e395520-e843-4d09-b54e-0d2c77ccf31d ]]>"
+        overheidproduct:onlineAanvragen:
+          type: string
+          example: "nee"
+        overheidproduct:uniformeProductnaam:
+          type: string
+          example: "paspoort"
+
+    EnrichedData:
+      type: object
+      properties:
+        authorityScheme:
+          type: string
+          example: Gemeente
+        authorityUri:
+          type: string
+          format: uri
+          example: "http://standaarden.overheid.nl/owms/terms/Smallingerland"
+        spatialType:
+          type: string
+          example: Gemeente
+        spatialUri:
+          type: string
+          format: uri
+          example: "http://standaarden.overheid.nl/owms/terms/Smallingerland"
+        uniformeProductnaamUri:
+          type: string
+          format: uri
+          example: "http://standaarden.overheid.nl/owms/terms/paspoort"
 
